@@ -2,6 +2,7 @@
 import express from 'express'
 import router from './routes/tasks.js'
 import connectDB from './db/connect.js'
+import { notFound } from './middleware/not-found.js'
 import * as dotenv from 'dotenv'
 
 // Environment Variables
@@ -18,6 +19,7 @@ app.use(express.json())
 
 // Routes
 app.use('/api/v1/tasks', router)
+app.use(notFound)
 
 
 async function start() {
